@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>见缝插针</title>
+    <style>
+        *{margin:0; padding:0;}
+        .main{
+            margin:50px;
+            position:relative;
+            width:800px;
+            height:800px;
+            /*border:1px solid red;*/
+
+        }
+        .center,.score{
+            width:150px;
+            height:150px;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+            background:#000;
+            position:relative;
+            margin:0 auto;
+            top:50px;
+        }
+        .center .scrollball{
+            width:150px;
+            height:1px;
+            background:#f00;
+            top:50%;
+            left:50%;
+            position:absolute;
+            -webkit-transform-origin:0% 50%;
+            -moz-transform-origin:0% 50%;
+            -ms-transform-origin:0% 50%;
+            -o-transform-origin:0% 50%;
+            transform-origin:0% 50%;
+        }
+        .center .scrollball:after{
+            content:'';
+            display:block;
+            width:20px;
+            height:20px;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+            background:red;
+            position:absolute;
+            top:-10px;
+            left:150px;
+
+        }
+
+        /*.center .scrollball:nth-child(1){*/
+            /*-webkit-transform: rotate(0deg);*/
+            /*-moz-transform: rotate(0deg);*/
+            /*-ms-transform: rotate(0deg);*/
+            /*-o-transform: rotate(0deg);*/
+            /*transform: rotate(0deg);*/
+        /*}*/
+        /*.center .scrollball:nth-child(2){*/
+            /*-webkit-transform: rotate(90deg);*/
+            /*-moz-transform: rotate(90deg);*/
+            /*-ms-transform: rotate(90deg);*/
+            /*-o-transform: rotate(90deg);*/
+            /*transform: rotate(90deg);*/
+        /*}*/
+        /*.center .scrollball:nth-child(3){*/
+            /*-webkit-transform: rotate(180deg);*/
+            /*-moz-transform: rotate(180deg);*/
+            /*-ms-transform: rotate(180deg);*/
+            /*-o-transform: rotate(180deg);*/
+            /*transform: rotate(180deg);*/
+        /*}*/
+        /*.center .scrollball:nth-child(4){*/
+            /*-webkit-transform: rotate(270deg);*/
+            /*-moz-transform: rotate(270deg);*/
+            /*-ms-transform: rotate(270deg);*/
+            /*-o-transform: rotate(270deg);*/
+            /*transform: rotate(270deg);*/
+        /*}*/
+        /*.center .scrollball:nth-child(5){*/
+            /*-webkit-transform: rotate(200deg);*/
+            /*-moz-transform: rotate(200deg);*/
+            /*-ms-transform: rotate(200deg);*/
+            /*-o-transform: rotate(200deg);*/
+            /*transform: rotate(200deg);*/
+        /*}*/
+        .waitballBox{
+            position:absolute;
+            top:420px;
+            left:50%;
+            margin-left:-10px;
+        }
+        .waitball{
+            width:20px;
+            height:20px;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+            background:#f00;
+            margin-top:10px;
+        }
+        .end{
+            position:absolute;
+            width:300px;
+            height:300px;
+            background:rgba(0,0,0,.6);
+            color:#fff;
+            top:200px;
+            left:300px;
+            font-size:30px;
+            text-align:center;
+            display:none;
+        }
+        .end p{
+            height:70%;
+            padding-top:80px;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .score{
+            position:absolute;
+            color:#fff;
+            left:325px;
+            z-index:10;
+            font-size:30px;
+            text-align: center;
+            line-height:150px;
+        }
+        .difficulty,h1{
+            position:absolute;
+        }
+        h1{
+            width:20px;
+            color:#e9931a;
+        }
+        .difficulty{
+            top:550px;
+            left:250px;
+        }
+        .animation{
+            width:20px;
+            height:300px;
+            /*border:1px solid red;*/
+            position:absolute;
+            left:50%;
+            margin-left:-10px;
+            top:125px;
+
+        }
+        .animation .dynamic{
+            width:1px;
+            height:150px;
+            background:#f00;
+            margin-left:9px;
+            position:absolute;
+            top:130px;
+            display:none;
+        }
+        .animation .dynamic:after{
+            display:block;
+            width:20px;
+            height:20px;
+            background:red;
+            content:'';
+            position:absolute;
+            top:150px;
+            left:-9px;
+            -webkit-border-radius:50%;
+            -moz-border-radius:50%;
+            border-radius:50%;
+
+
+        }
+    </style>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/index.js"></script>
+</head>
+<body>
+    <div class="main">
+        <h1>点击页面任意位置开始游戏</h1>
+        <div class="difficulty">
+            <input type="text" value="当前难度：1" disabled>
+            <input type="button" value="增加难度">
+            <input type="button" value="减小难度">
+            <input type="button" value="随机难度">
+        </div>
+        <div class="score">0</div>
+        <div class="center">
+            <!--<div class="scrollball init-scrollball1"></div>-->
+            <!--<div class="scrollball init-scrollball2"></div>-->
+            <!--<div class="scrollball init-scrollball3"></div>-->
+            <!--<div class="scrollball init-scrollball4"></div>-->
+            <!--<div class="scrollball init-scrollball4"></div>-->
+        </div>
+        <div class="animation">
+            <div class="dynamic"></div>
+        </div>
+        <div class="waitballBox">
+            <!--<div class="waitball"></div>-->
+            <!--<div class="waitball"></div>-->
+            <!--<div class="waitball"></div>-->
+            <!--<div class="waitball"></div>-->
+        </div>
+
+    </div>
+    <div class="end">
+        <p class="Tscore"></p>
+        <a href="javascript:void(0);">重新开始</a>
+    </div>
+
+
+
+</body>
+</html>
